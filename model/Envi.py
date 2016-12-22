@@ -1,12 +1,15 @@
 
 class Envi:
-    def __init__(self):
+    def __init__(self,player):
         self.point = 0
         self.direction_trigger = 5
         self.pause_val = 200
 
         self.score = 0
+        self.point = 10
         self.permission = 5
+
+        self.player = player
 
         self.pause_status = "USABLE"
 
@@ -28,4 +31,8 @@ class Envi:
         return True
 
     def update(self):
+        if(self.score >= self.point):
+            self.player.velo+=2
+            self.point += 10
+
         self.pause_status_state()

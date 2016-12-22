@@ -14,3 +14,7 @@ class Panel():
         fuckjew = "SWAP: "+str(self.envi.permission)
         fuckjewcolor = arcade.color.BLUE if self.envi.permission > 0 else arcade.color.RED
         arcade.draw_text(fuckjew, 250, 20,fuckjewcolor, 20)
+
+        fuckjew = "SCORE: "+str(self.envi.score)
+        fuckjewcolor = arcade.color.BLUE
+        arcade.draw_text(fuckjew, 400, 20,fuckjewcolor, 20)

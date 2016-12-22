@@ -10,18 +10,17 @@ class GameWindow(arcade.Window):
 
         arcade.set_background_color(arcade.color.BLACK)
 
-        self.envi = model.Envi()
-        self.panel = model.Panel(self.envi)
-
         self.background = arcade.sprite.Sprite("./img/fckjw.jpg");
         self.background.set_position(400,300)
 
-        self.marijuana_generator = model.Item(self.player)
 
         self.player = model.Player()
         self.playerview = self.player.view
 
-        self.marijuana_generator = model.Item(self.player)
+        self.envi = model.Envi(self.player)
+        self.panel = model.Panel(self.envi)
+
+        self.marijuana_generator = model.Item(self.playerview,self.envi)
 
 
         self.player_can_move = True
