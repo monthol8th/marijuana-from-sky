@@ -7,10 +7,10 @@ class Clover(Item):
         super().__init__(player,envi)
 
     def add_item(self):
-        if random.randint(0,100) == 0:
+        if random.randint(0,60) == 0:
             item = arcade.sprite.Sprite("./img/clover.png")
             item.set_position(random.randint(100,700),600)
-            item.change_y = (-1)*random.randint(5,10)
+            item.change_y = (-1)*random.randint(10,25)
             self.item_list.append(item)
 
     def update(self):
@@ -21,9 +21,10 @@ class Clover(Item):
             if item.center_y<0:
                 item.kill()
             elif hit(self.player,item):
+                self.envi.pause_val+=5*abs(item.change_y)
+                self.envi.permission+= (abs(item.change_y) - 10)/2+1 if item.change_y>=15 else 2
                 item.kill()
-                self.envi.permission+=2
-                self.envi.pause_val+=75
+
 
 
         self.item_list.update()

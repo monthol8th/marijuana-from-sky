@@ -10,7 +10,7 @@ class GameWindow(arcade.Window):
 
         arcade.set_background_color(arcade.color.BLACK)
 
-        self.background = arcade.sprite.Sprite("./img/fckjw.jpg");
+        self.background = arcade.sprite.Sprite("./img/background.jpg");
         self.background.set_position(400,300)
 
 
@@ -37,7 +37,7 @@ class GameWindow(arcade.Window):
         if key == arcade.key.SPACE and self.envi.pause_status == "USABLE":
             self.player_can_move = False
             self.envi.pause_status = "USED"
-        elif key == arcade.key.LSHIFT and self.player_can_move:
+        elif key == arcade.key.LSHIFT and self.envi.pause_status != "USED":
             if self.envi.use_permission():
                 self.player.change_direction()
 
@@ -45,7 +45,7 @@ class GameWindow(arcade.Window):
         arcade.start_render()
         self.background.draw()
 
-        if(self.playerview.center_y>=50):
+        if(self.playerview.center_y>=-40):
             self.player.update()
             self.envi.update()
             self.marijuana_generator.update()

@@ -6,7 +6,7 @@ class Envi:
         self.pause_val = 200
 
         self.score = 0
-        self.point = 10
+        self.point = 25
         self.permission = 5
 
         self.player = player
@@ -32,7 +32,7 @@ class Envi:
 
     def update(self):
         if(self.score >= self.point):
-            self.player.velo+=2
-            self.point +=10
+            self.player.velo+=2 if self.player.velo < 15 else 0
+            self.point +=25
 
         self.pause_status_state()
