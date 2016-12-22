@@ -22,7 +22,8 @@ class Clover(Item):
                 item.kill()
             elif hit(self.player,item):
                 item.kill()
-                self.envi.permission+=1
+                self.envi.permission+=2
+                self.envi.pause_val+=75
 
 
         self.item_list.update()

@@ -6,8 +6,9 @@ class Jewel(Item):
     def __init__(self,player,envi):
         super().__init__(player,envi)
         self.limit = 0
+        self.countPenalty = 0
         self.count = 0
-        self.down = -5
+        self.penalty = 4
 
     def add_item(self):
         if random.randint(0,20) == 0:
@@ -25,21 +26,22 @@ class Jewel(Item):
                 item.kill()
             elif hit(self.player,item):
                 item.kill()
-                self.player.change_y = self.down
-                self.limit +=4
-                self.count = 0
+                self.player.change_y = -3
+                self.limit += self.penalty
+                self.countPenalty = 0
 
-        if self.player.change_y == self.down:
+        if self.player.change_y == -5:
             if self.count >= self.limit:
                 self.count,self.limit = 0,0
                 self.player.change_y = 0
+                self.penalty = self.penalty/2 if self.penalty >= 8 else 4
             else:
                 self.count +=1
-        else
-            self.count+=1
-            if self.count>=50:
-                self.down-=1
-                self.count = 0
+        else:
+            self.countPenalty+=1
+            if self.countPenalty>=100:
+                self.penalty +=1
+                self.countPenalty = 0
 
 
         self.item_list.update()

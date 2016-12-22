@@ -28,16 +28,16 @@ class GameWindow(arcade.Window):
         self.player_can_move = True
 
     def on_key_release(self, key, key_modifiers):
-        if key == arcade.key.LSHIFT and (self.envi.pause_status == "USED" or self.envi.pause_status == "DISCHARGE"):
+        if key == arcade.key.SPACE and (self.envi.pause_status == "USED" or self.envi.pause_status == "DISCHARGE"):
             self.player_can_move = True
             self.envi.pause_status = "CHARGE"
 
     def on_key_press(self, key, key_modifiers):
 
-        if key == arcade.key.LSHIFT and self.envi.pause_status == "USABLE":
+        if key == arcade.key.SPACE and self.envi.pause_status == "USABLE":
             self.player_can_move = False
             self.envi.pause_status = "USED"
-        elif key == arcade.key.SPACE and self.player_can_move:
+        elif key == arcade.key.LSHIFT and self.player_can_move:
             if self.envi.use_permission():
                 self.player.change_direction()
 
@@ -45,19 +45,22 @@ class GameWindow(arcade.Window):
         arcade.start_render()
         self.background.draw()
 
-        self.player.update()
-        self.envi.update()
-        self.marijuana_generator.update()
-        self.jewel_generator.update()
-        self.clover_generator.update()
+        if(self.playerview.center_y>=50):
+            self.player.update()
+            self.envi.update()
+            self.marijuana_generator.update()
+            self.jewel_generator.update()
+            self.clover_generator.update()
 
-        if(self.envi.pause_status != "USED"):
-            self.playerview.update()
-        self.playerview.draw()
-        self.marijuana_generator.draw()
-        self.jewel_generator.draw()
-        self.clover_generator.draw()
+            if(self.envi.pause_status != "USED"):
+                self.playerview.update()
+            self.playerview.draw()
+            self.marijuana_generator.draw()
+            self.jewel_generator.draw()
+            self.clover_generator.draw()
 
+        else:
+            arcade.draw_text("GAME OVER", 0, 250,arcade.color.RED, 100)
         self.panel.draw()
 
 if __name__ == '__main__':

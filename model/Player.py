@@ -6,7 +6,7 @@ class Player(arcade.sprite.Sprite):
         self.ongoing = "right"
         self.state = "MOVE"
 
-        self.velo = 5
+        self.velo = 7
         self.is_direction_change = False
         self.view = arcade.sprite.Sprite("./img/pimp_right.png")
         self.view.set_position(100,100)
