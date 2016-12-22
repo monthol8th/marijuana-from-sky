@@ -16,10 +16,13 @@ class GameWindow(arcade.Window):
         self.background = arcade.sprite.Sprite("./img/fckjw.jpg");
         self.background.set_position(400,300)
 
-
+        self.marijuana_generator = model.Item(self.player)
 
         self.player = model.Player()
         self.playerview = self.player.view
+
+        self.marijuana_generator = model.Item(self.player)
+
 
         self.player_can_move = True
 
@@ -43,10 +46,12 @@ class GameWindow(arcade.Window):
 
         self.player.update()
         self.envi.update()
+        self.marijuana_generator.update()
 
         if(self.envi.pause_status != "USED"):
             self.playerview.update()
         self.playerview.draw()
+        self.marijuana_generator.draw()
         self.panel.draw()
 
 if __name__ == '__main__':
