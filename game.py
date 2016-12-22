@@ -11,6 +11,7 @@ class GameWindow(arcade.Window):
         arcade.set_background_color(arcade.color.BLACK)
 
         self.envi = model.Envi()
+        self.panel = model.Panel(self.envi)
 
         self.background = arcade.sprite.Sprite("./img/fckjw.jpg");
         self.background.set_position(400,300)
@@ -33,9 +34,8 @@ class GameWindow(arcade.Window):
             self.player_can_move = False
             self.envi.pause_status = "USED"
         elif key == arcade.key.SPACE and self.player_can_move:
-            self.player.change_direction()
-
-
+            if self.envi.use_permission():
+                self.player.change_direction()
 
     def on_draw(self):
         arcade.start_render()
@@ -44,11 +44,10 @@ class GameWindow(arcade.Window):
         self.player.update()
         self.envi.update()
 
-        arcade.draw_text(str(self.envi.pause_val),self.width - 30, self.height - 30,arcade.color.WHITE, 20)
-
         if(self.envi.pause_status != "USED"):
             self.playerview.update()
         self.playerview.draw()
+        self.panel.draw()
 
 if __name__ == '__main__':
     window = GameWindow(SCREEN_WIDTH, SCREEN_HEIGHT)

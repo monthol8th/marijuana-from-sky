@@ -6,6 +6,7 @@ class Player(arcade.sprite.Sprite):
         self.ongoing = "right"
         self.state = "MOVE"
 
+        self.velo = 5
         self.is_direction_change = False
         self.view = arcade.sprite.Sprite("./img/pimp_right.png")
         self.view.set_position(100,100)
@@ -26,5 +27,5 @@ class Player(arcade.sprite.Sprite):
 
     def on_direction_change(self):
         if self.is_direction_change:
-            self.view.change_x = 5 if self.ongoing == "right" else -5
+            self.view.change_x = self.velo if self.ongoing == "right" else self.velo*(-1)
             self.view.set_texture(0 if self.ongoing == "right" else 1)
