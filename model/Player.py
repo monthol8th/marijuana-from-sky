@@ -4,10 +4,12 @@ class Player(arcade.sprite.Sprite):
     def __init__(self):
 
         self.ongoing = "right"
+        self.state = "MOVE"
+
         self.is_direction_change = False
-        self.view = arcade.sprite.Sprite("./model/pimp_right.png")
-        self.view.append_texture(arcade.draw_commands.load_texture("./model/pimp_left.png"))
-        print(self.view.textures)
+        self.view = arcade.sprite.Sprite("./img/pimp_right.png")
+        self.view.set_position(100,100)
+        self.view.append_texture(arcade.draw_commands.load_texture("./img/pimp_left.png"))
         self.view.change_x = 5
 
     def change_direction(self):
