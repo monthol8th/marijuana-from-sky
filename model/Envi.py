@@ -32,7 +32,7 @@ class Envi:
 
     def update(self):
         if(self.score >= self.point):
-            self.player.velo+=2
-            self.point += 10
+            self.player.velo+=1
+            self.point +=10
 
         self.pause_status_state()
