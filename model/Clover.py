@@ -2,14 +2,12 @@ import arcade
 from .Item import Item
 import random
 
-class Jewel(Item):
+class Clover(Item):
     def __init__(self,player,envi):
         super().__init__(player,envi)
-        self.limit = 0
-        self.count = 0
 
     def add_item(self):
-        if random.randint(0,50) == 0:
+        if random.randint(0,100) == 0:
             item = arcade.sprite.Sprite("./img/clover.png")
             item.set_position(random.randint(100,700),600)
             item.change_y = (-1)*random.randint(5,10)

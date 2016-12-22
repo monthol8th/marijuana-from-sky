@@ -3,3 +3,4 @@ from .Envi import Envi
 from .Panel import Panel
 from .Item import Item
 from .Jewel import Jewel
+from .Clover import Clover

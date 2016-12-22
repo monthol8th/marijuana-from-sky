@@ -22,6 +22,7 @@ class GameWindow(arcade.Window):
 
         self.marijuana_generator = model.Item(self.playerview,self.envi)
         self.jewel_generator = model.Jewel(self.playerview,self.envi)
+        self.clover_generator = model.Clover(self.playerview,self.envi)
 
 
         self.player_can_move = True
@@ -48,12 +49,14 @@ class GameWindow(arcade.Window):
         self.envi.update()
         self.marijuana_generator.update()
         self.jewel_generator.update()
+        self.clover_generator.update()
 
         if(self.envi.pause_status != "USED"):
             self.playerview.update()
         self.playerview.draw()
         self.marijuana_generator.draw()
         self.jewel_generator.draw()
+        self.clover_generator.draw()
 
         self.panel.draw()
 
