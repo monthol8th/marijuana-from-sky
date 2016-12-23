@@ -1,5 +1,5 @@
 import arcade
-import model
+import src
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
@@ -14,15 +14,15 @@ class GameWindow(arcade.Window):
         self.background.set_position(400,300)
 
 
-        self.player = model.Player()
+        self.player = src.Player()
         self.playerview = self.player.view
 
-        self.envi = model.Envi(self.player)
-        self.panel = model.Panel(self.envi)
+        self.envi = src.Envi(self.player)
+        self.panel = src.Panel(self.envi)
 
-        self.marijuana_generator = model.Item(self.playerview,self.envi)
-        self.jewel_generator = model.Jewel(self.playerview,self.envi)
-        self.clover_generator = model.Clover(self.playerview,self.envi)
+        self.marijuana_generator = src.Item(self.playerview,self.envi)
+        self.jewel_generator = src.Jewel(self.playerview,self.envi)
+        self.clover_generator = src.Clover(self.playerview,self.envi)
 
 
         self.player_can_move = True
