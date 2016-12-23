@@ -11,7 +11,7 @@ class Jewel(Item):
         self.penalty = 4
 
     def add_item(self):
-        if random.randint(0,20) == 0:
+        if random.randint(0,30) == 0:
             item = arcade.sprite.Sprite("./img/jew.png")
             item.set_position(random.randint(100,700),600)
             item.change_y = (-1)*random.randint(5,15)
