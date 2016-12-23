@@ -15,13 +15,13 @@ class Jewel(Item):
             item = arcade.sprite.Sprite("./img/jew.png")
             item.set_position(random.randint(100,700),600)
             item.change_y = (-1)*random.randint(5,15)
-            self.item_list.append(item)
+            self.view.append(item)
 
     def update(self):
 
         hit = lambda a, b : abs(a.center_x - b.center_x)<=25 and abs(a.center_y - b.center_y) <= 70
 
-        for item in self.item_list:
+        for item in self.view:
             if item.center_y<0:
                 item.kill()
             elif hit(self.player,item):
@@ -45,6 +45,6 @@ class Jewel(Item):
                 self.countPenalty = 0
 
 
-        self.item_list.update()
+        self.view.update()
 
         self.add_item()

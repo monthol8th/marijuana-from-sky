@@ -1,6 +1,6 @@
 
 class Envi:
-    def __init__(self,player,view):
+    def __init__(self,player):
         self.point = 0
         self.direction_trigger = 5
         self.pause_val = 200
