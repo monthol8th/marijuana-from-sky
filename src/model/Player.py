@@ -1,5 +1,5 @@
 import arcade
-from ..PlayerViewUpdater import PlayerViewUpdater
+from ..view import PlayerViewUpdater
 
 class Player(arcade.sprite.Sprite):
     def __init__(self):
