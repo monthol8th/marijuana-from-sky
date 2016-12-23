@@ -23,6 +23,8 @@ class Envi:
             if self.pause_val >= 200:
                 self.pause_status = "USABLE"
 
+        self.player.view_updater.moveable = self.pause_status!="USED"
+
     def use_permission(self):
         if self.permission == 0:
             return False

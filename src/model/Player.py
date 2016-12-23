@@ -1,4 +1,5 @@
 import arcade
+from .PlayerViewUpdater import PlayerViewUpdater
 
 class Player(arcade.sprite.Sprite):
     def __init__(self):
@@ -12,6 +13,8 @@ class Player(arcade.sprite.Sprite):
         self.view.set_position(100,100)
         self.view.append_texture(arcade.draw_commands.load_texture("./img/pimp_left.png"))
         self.view.change_x = 5
+
+        self.view_updater = PlayerViewUpdater(self.view)
 
     def change_direction(self):
         self.ongoing = "right" if self.ongoing == "left" else "left"

@@ -10,6 +10,8 @@ class GameWindow(arcade.Window):
 
         arcade.set_background_color(arcade.color.BLACK)
 
+        self.drawer = src.Drawer();
+
         self.background = arcade.sprite.Sprite("./img/background.jpg");
         self.background.set_position(400,300)
 
@@ -20,12 +22,19 @@ class GameWindow(arcade.Window):
         self.envi = src.Envi(self.player)
         self.panel = src.Panel(self.envi)
 
-        self.marijuana_generator = src.Item(self.playerview,self.envi)
-        self.jewel_generator = src.Jewel(self.playerview,self.envi)
-        self.clover_generator = src.Clover(self.playerview,self.envi)
+        self.marijuana = src.Item(self.playerview,self.envi)
+        self.jewel = src.Jewel(self.playerview,self.envi)
+        self.clover = src.Clover(self.playerview,self.envi)
 
 
         self.player_can_move = True
+
+        self.drawer.append(self.player.view)
+        self.drawer.append(self.marijuana.view)
+        self.drawer.append(self.jewel.view)
+        self.drawer.append(self.clover.view)
+        self.drawer.append(self.panel)
+
 
     def on_key_release(self, key, key_modifiers):
         if key == arcade.key.SPACE and (self.envi.pause_status == "USED" or self.envi.pause_status == "DISCHARGE"):
@@ -48,16 +57,16 @@ class GameWindow(arcade.Window):
         if(self.playerview.center_y>=-40):
             self.player.update()
             self.envi.update()
-            self.marijuana_generator.update()
-            self.jewel_generator.update()
-            self.clover_generator.update()
+            self.marijuana.update()
+            self.jewel.update()
+            self.clover.update()
 
             if(self.envi.pause_status != "USED"):
                 self.playerview.update()
             self.playerview.draw()
-            self.marijuana_generator.draw()
-            self.jewel_generator.draw()
-            self.clover_generator.draw()
+            self.marijuana.draw()
+            self.jewel.draw()
+            self.clover.draw()
 
         else:
             arcade.draw_text("GAME OVER", 0, 250,arcade.color.RED, 100)
