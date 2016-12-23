@@ -1,6 +1,6 @@
 import arcade
 from .Item import Item
-import random
+# import random
 
 class Clover(Item):
     def __init__(self,player,envi):
@@ -29,4 +29,4 @@ class Clover(Item):
 
         self.view.update()
 
-        self.add_item()
+        #self.add_item()

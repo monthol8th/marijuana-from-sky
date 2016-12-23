@@ -12,6 +12,7 @@ class Controller(object):
 
         self.drawer = Drawer();
         self.updater = Updater();
+        self.randommer = Randommer()
 
         arcade.set_background_color(arcade.color.BLACK)
 
@@ -40,6 +41,10 @@ class Controller(object):
         self.drawer.append(self.clover.view)
         self.drawer.append(self.panel)
 
+        self.randommer.append(self.clover.view,60,10,25,"clover")
+        self.randommer.append(self.marijuana.view,5,5,10,"marijuana")
+        self.randommer.append(self.jewel.view,30,5,15,"jew")
+
         #self.wave_obj = sa.WaveObject.from_wave_file("./fckjw.wav")
         #self.play_obj = self.wave_obj.play()
 
@@ -63,6 +68,7 @@ class Controller(object):
 
         if(not self.gameover and self.playerview.center_y>=-40):
             self.updater.update()
+            self.randommer.random()
             self.drawer.draw()
 
         else:

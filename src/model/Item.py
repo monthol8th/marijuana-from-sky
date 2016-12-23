@@ -1,10 +1,10 @@
 import arcade
-import random
+# import random
 
 class Item():
     def __init__(self, player,envi):
         self.view =  arcade.sprite.SpriteList()
-        random.seed()
+        # random.seed()
         self.player = player
         self.envi = envi
 
@@ -29,7 +29,7 @@ class Item():
 
         self.view.update()
 
-        self.add_item()
+        #self.add_item()
 
     def draw(self):
         self.view.draw()

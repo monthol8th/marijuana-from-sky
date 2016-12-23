@@ -1,6 +1,6 @@
 import arcade
 from .Item import Item
-import random
+# import random
 
 class Jewel(Item):
     def __init__(self,player,envi):
@@ -47,4 +47,4 @@ class Jewel(Item):
 
         self.view.update()
 
-        self.add_item()
+        #self.add_item()
