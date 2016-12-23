@@ -7,7 +7,7 @@ SCREEN_HEIGHT = 600
 class GameWindow(arcade.Window):
     def __init__(self, width, height):
         super().__init__(width, height)
-        self.controller = src.Controller()
+        self.controller = src.Controller(self)
 
 
     def on_key_release(self, key, key_modifiers):
