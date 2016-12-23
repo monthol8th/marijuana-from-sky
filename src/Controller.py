@@ -1,5 +1,5 @@
 import arcade
-import simpleaudio as sa
+#import simpleaudio as sa
 from .model import *
 from .view import *
 
@@ -40,7 +40,7 @@ class Controller(object):
         self.drawer.append(self.clover.view)
         self.drawer.append(self.panel)
 
-        self.wave_obj = sa.WaveObject.from_wave_file("./fckjw.wav")
+        #self.wave_obj = sa.WaveObject.from_wave_file("./fckjw.wav")
         #self.play_obj = self.wave_obj.play()
 
     def on_key_release(self, key, key_modifiers):
