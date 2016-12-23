@@ -11,6 +11,7 @@ class GameWindow(arcade.Window):
         arcade.set_background_color(arcade.color.BLACK)
 
         self.drawer = src.Drawer();
+        self.updater = src.Updater();
 
         self.background = arcade.sprite.Sprite("./img/background.jpg");
         self.background.set_position(400,300)
@@ -28,6 +29,13 @@ class GameWindow(arcade.Window):
 
 
         self.player_can_move = True
+
+        self.updater.append(self.player)
+        self.updater.append(self.envi)
+        self.updater.append(self.marijuana)
+        self.updater.append(self.jewel)
+        self.updater.append(self.clover)
+        self.updater.append(self.player.view_updater)
 
         self.drawer.append(self.player.view)
         self.drawer.append(self.marijuana.view)
@@ -55,22 +63,19 @@ class GameWindow(arcade.Window):
         self.background.draw()
 
         if(self.playerview.center_y>=-40):
-            self.player.update()
-            self.envi.update()
-            self.marijuana.update()
-            self.jewel.update()
-            self.clover.update()
-
-            if(self.envi.pause_status != "USED"):
-                self.playerview.update()
-            self.playerview.draw()
-            self.marijuana.draw()
-            self.jewel.draw()
-            self.clover.draw()
+        #     self.player.update()
+        #     self.envi.update()
+        #     self.marijuana.update()
+        #     self.jewel.update()
+        #     self.clover.update()
+        #
+        #     if(self.envi.pause_status != "USED"):
+        #         self.playerview.update()
+            self.updater.update()
+            self.drawer.draw()
 
         else:
             arcade.draw_text("GAME OVER", 0, 250,arcade.color.RED, 100)
-        self.panel.draw()
 
 if __name__ == '__main__':
     window = GameWindow(SCREEN_WIDTH, SCREEN_HEIGHT)

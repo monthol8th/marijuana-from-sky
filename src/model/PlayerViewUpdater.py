@@ -6,6 +6,6 @@ class PlayerViewUpdater(object):
         self.view = view
         self.moveable = True
 
-    def upddate(self):
+    def update(self):
         if self.moveable:
             self.view.update()
